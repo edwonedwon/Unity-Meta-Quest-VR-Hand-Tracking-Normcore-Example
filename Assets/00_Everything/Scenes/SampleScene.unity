@@ -972,6 +972,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1473884539}
     m_Modifications:
+    - target: {fileID: 100730664540319165, guid: 7191c136c97ba4c649c661334a19a542, type: 3}
+      propertyPath: _updateRootScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100730664540319165, guid: 7191c136c97ba4c649c661334a19a542, type: 3}
+      propertyPath: _enablePhysicsCapsules
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 862906542114025830, guid: 7191c136c97ba4c649c661334a19a542, type: 3}
       propertyPath: m_Name
       value: OVR Hand Tracked Right
@@ -1199,6 +1207,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1473873279}
     m_Modifications:
+    - target: {fileID: 1908641260635188668, guid: 531ea5f860d2d4284826562e6ac95fbc, type: 3}
+      propertyPath: _updateRootScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7545967182718391074, guid: 531ea5f860d2d4284826562e6ac95fbc, type: 3}
       propertyPath: m_RootOrder
       value: 2

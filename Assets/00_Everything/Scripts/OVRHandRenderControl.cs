@@ -11,7 +11,7 @@ public class OVRHandRenderControl : MonoBehaviour
     void Awake()
     {
         hand = GetComponent<OVRHand>();
-        renderParent.gameObject.SetActive(false);
+        UpdateRenderLogic();
         confidenceLast = hand.HandConfidence;
     }
 
@@ -19,11 +19,16 @@ public class OVRHandRenderControl : MonoBehaviour
     {
         if (hand.HandConfidence != confidenceLast)
         {
-            if (hand.HandConfidence == OVRHand.TrackingConfidence.High)
-                renderParent.gameObject.SetActive(true);
-            else
-                renderParent.gameObject.SetActive(false);
+            UpdateRenderLogic();
         }
         confidenceLast = hand.HandConfidence;
+    }
+
+    void UpdateRenderLogic()
+    {
+        if (hand.HandConfidence == OVRHand.TrackingConfidence.High)
+            renderParent.gameObject.SetActive(true);
+        else
+            renderParent.gameObject.SetActive(false);
     }
 }

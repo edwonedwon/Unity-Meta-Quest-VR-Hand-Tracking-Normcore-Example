@@ -10,6 +10,7 @@ public class OVRControllerRenderControl : MonoBehaviour
     void Awake()
     {
         renderParent.gameObject.SetActive(false);
+        UpdateRenderLogic(OVRPlugin.GetHandTrackingEnabled());
     }
 
     void Update()
@@ -17,11 +18,16 @@ public class OVRControllerRenderControl : MonoBehaviour
         bool handTrackingEnabled = OVRPlugin.GetHandTrackingEnabled();
         if (handTrackingEnabledLast != handTrackingEnabled)
         {
-            if (handTrackingEnabled)
-                renderParent.gameObject.SetActive(false);
-            else
-                renderParent.gameObject.SetActive(true);
+            UpdateRenderLogic(handTrackingEnabled);
         }
         handTrackingEnabledLast = handTrackingEnabled;
+    }
+
+    void UpdateRenderLogic(bool handTrackingEnabled)
+    {
+        if (handTrackingEnabled)
+            renderParent.gameObject.SetActive(false);
+        else
+            renderParent.gameObject.SetActive(true);
     }
 }
