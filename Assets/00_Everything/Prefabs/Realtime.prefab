@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b6ae53fe1e66d429cc41bbf5b29cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _localAvatarPrefab: {fileID: 1435502846325602, guid: 132fa799030920d4cb15dfab7ec5c45f, type: 3}
+  _localAvatarPrefab: {fileID: 1435502846325602, guid: 4c168d2cd132b4da59fe63cb33541224, type: 3}
   _localPlayer:
     root: {fileID: 0}
     head: {fileID: 0}
