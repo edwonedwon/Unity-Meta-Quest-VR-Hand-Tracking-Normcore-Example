@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 488160}
   - component: {fileID: 11479374}
   m_Layer: 0
-  m_Name: OVRControllerPrefab
+  m_Name: OVR Controller Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
