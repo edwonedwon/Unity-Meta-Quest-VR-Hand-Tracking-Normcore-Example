@@ -17,22 +17,6 @@ public class RealtimeOVRHandTrackingConfidenceView : RealtimeComponent<OVRHandTr
         viewParent.gameObject.SetActive(false);
     }
 
-    void OnEnable()
-    {
-        realtime.didConnectToRoom += OnDidConnectToRoom;
-    }
-
-    void OnDisable()
-    {
-        realtime.didConnectToRoom -= OnDidConnectToRoom;
-    }
-
-    void OnDidConnectToRoom(Realtime realtime)
-    {
-        int handTrackingConfidence = hand.HandConfidence == OVRHand.TrackingConfidence.High ? 1 : 0;
-        ShowHandViewOrNot(handTrackingConfidence);
-    }
-    
     void Update()
     {
         if (isOwnedLocallyInHierarchy)
@@ -53,15 +37,14 @@ public class RealtimeOVRHandTrackingConfidenceView : RealtimeComponent<OVRHandTr
 
     protected override void OnRealtimeModelReplaced(OVRHandTrackingConfidenceModel previousModel, OVRHandTrackingConfidenceModel currentModel)
     {
+        int handTrackingConfidence = hand.HandConfidence == OVRHand.TrackingConfidence.High ? 1 : 0;
+        ShowHandViewOrNot(handTrackingConfidence);
+        
         if (currentModel != null)
         {
-            int handTrackingConfidence = hand.HandConfidence == OVRHand.TrackingConfidence.High ? 1 : 0;
-
             // If this is a model that has no data set on it, set the default value
             if (currentModel.isFreshModel)
                 currentModel.handTrackingConfidence = handTrackingConfidence; // default is low confidence
-
-            ShowHandViewOrNot(handTrackingConfidence);
 
             // Register for events so we'll know if the color changes later
             currentModel.handTrackingConfidenceDidChange += OnHandTrackingConfidenceDidChange;

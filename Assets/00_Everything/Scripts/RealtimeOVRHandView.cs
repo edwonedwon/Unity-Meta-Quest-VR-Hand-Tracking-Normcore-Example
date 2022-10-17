@@ -15,11 +15,6 @@ public class RealtimeOVRHandView : RealtimeComponent<OVRHandViewModel>
         HideAllHandViews();
     }
 
-    void OnEnable()
-    {
-        realtime.didConnectToRoom += OnDidConnectToRoom;
-    }
-
     void OnDisable()
     {
         realtime.didConnectToRoom -= OnDidConnectToRoom;
@@ -86,20 +81,20 @@ public class RealtimeOVRHandView : RealtimeComponent<OVRHandViewModel>
 
     protected override void OnRealtimeModelReplaced(OVRHandViewModel previousModel, OVRHandViewModel currentModel)
     {
+        bool handTrackingEnabled = OVRPlugin.GetHandTrackingEnabled();
+        int handViewType = 0;
+        if (handTrackingEnabled)
+            handViewType = 1;
+        else
+            handViewType = 0;
+
+        SwitchHandView(handViewType);
+        
         if (currentModel != null)
         {
-            bool handTrackingEnabled = OVRPlugin.GetHandTrackingEnabled();
-            int handViewType = 0;
-            if (handTrackingEnabled)
-                handViewType = 1;
-            else
-                handViewType = 0;
-
             // If this is a model that has no data set on it, set the default value
             if (currentModel.isFreshModel)
                 currentModel.handViewType = handViewType; // default view is controller view
-
-            SwitchHandView(handViewType);
 
             // Register for events so we'll know if the color changes later
             currentModel.handViewTypeDidChange += OnHandViewTypeDidChange;
