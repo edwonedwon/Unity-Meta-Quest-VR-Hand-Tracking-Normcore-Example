@@ -491,8 +491,6 @@ GameObject:
   - component: {fileID: 4760348600833427873}
   - component: {fileID: -3831655260473396282}
   - component: {fileID: 100730664540319165}
-  - component: {fileID: 1040651413580595525}
-  - component: {fileID: 589173774635139261}
   m_Layer: 0
   m_Name: OVR Hand Tracked Right
   m_TagString: Untagged
@@ -619,44 +617,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &1040651413580595525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862906542114025830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -363599832, guid: c424820a8880b8845bda10ec0b41507e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _realtime: {fileID: 0}
-  _sceneViewUUID: 
-  _viewUUID: 
-  _sceneViewPreventOwnershipTakeover: 0
-  _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
-  _sceneViewDestroyWhenOwnerOrLastClientLeavesMigrated: 1
-  _sceneViewDestroyWhenLastClientLeaves: 1
-  _components:
-  - componentID: 1
-    component: {fileID: 589173774635139261}
-  _childViews:
-  - componentID: 1
-    component: {fileID: 4076034616966211855}
---- !u!114 &589173774635139261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862906542114025830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6d8bc0004e4f49d48338906477b9c16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewParent: {fileID: 3929214377133495456}
 --- !u!1 &897083374660680710
 GameObject:
   m_ObjectHideFlags: 0
