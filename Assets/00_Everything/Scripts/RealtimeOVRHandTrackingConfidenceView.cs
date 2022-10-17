@@ -18,14 +18,17 @@ public class RealtimeOVRHandTrackingConfidenceView : RealtimeComponent<OVRHandTr
 
     void Update()
     {
-        if (hand.HandConfidence != confidenceLast)
+        if (isOwnedLocallyInHierarchy)
         {
-            if (hand.HandConfidence == OVRHand.TrackingConfidence.High)
-                model.handTrackingConfidence = 1;
-            else
-                model.handTrackingConfidence = 0;
+            if (hand.HandConfidence != confidenceLast)
+            {
+                if (hand.HandConfidence == OVRHand.TrackingConfidence.High)
+                    model.handTrackingConfidence = 1;
+                else
+                    model.handTrackingConfidence = 0;
+            }
+            confidenceLast = hand.HandConfidence;
         }
-        confidenceLast = hand.HandConfidence;
     }
 
     void OnHandTrackingConfidenceDidChange(OVRHandTrackingConfidenceModel model, int handTrackingConfidence)

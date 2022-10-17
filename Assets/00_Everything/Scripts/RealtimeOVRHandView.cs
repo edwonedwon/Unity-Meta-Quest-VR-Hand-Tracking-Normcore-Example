@@ -12,12 +12,15 @@ public class RealtimeOVRHandView : RealtimeComponent<OVRHandViewModel>
 
     void Update()
     {
-        // update hand tracking vs. controller view on model
-        bool handTrackingEnabled = OVRPlugin.GetHandTrackingEnabled();
-        if (handTrackingEnabled)
-            model.handViewType = 1;
-        else
-            model.handViewType = 0;
+        if (isOwnedLocallyInHierarchy)
+        {
+            // update hand tracking vs. controller view on model
+            bool handTrackingEnabled = OVRPlugin.GetHandTrackingEnabled();
+            if (handTrackingEnabled)
+                model.handViewType = 1;
+            else
+                model.handViewType = 0;
+        }
     }
 
     void OnHandViewTypeDidChange(OVRHandViewModel model, int handViewType)
