@@ -778,6 +778,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVR Hand Tracked Right
       objectReference: {fileID: 0}
+    - target: {fileID: 1458270474779307293, guid: 7191c136c97ba4c649c661334a19a542, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4760348600833427873, guid: 7191c136c97ba4c649c661334a19a542, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -946,6 +950,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1908641260635188668, guid: 531ea5f860d2d4284826562e6ac95fbc, type: 3}
       propertyPath: _updateRootScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512019553439612182, guid: 531ea5f860d2d4284826562e6ac95fbc, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7545967182718391074, guid: 531ea5f860d2d4284826562e6ac95fbc, type: 3}

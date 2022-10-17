@@ -22,11 +22,10 @@ public class RealtimeMakeAllChildrenLocal : MonoBehaviour
     {
         if (view.isOwnedLocallyInHierarchy)
         {
-            Debug.Log("did replace component modles locally");
             foreach (RealtimeView childView in childViews)
                 if (childView != view)
                     childView.RequestOwnership();
-                    
+
             foreach (RealtimeTransform childTransform in childTransforms)
                 if (childTransform != view)
                     childTransform.RequestOwnership();

@@ -16,6 +16,11 @@ public class RealtimeOVRHandTrackingConfidenceView : RealtimeComponent<OVRHandTr
         confidenceLast = hand.HandConfidence;
     }
 
+    void Start()
+    {
+        viewParent.gameObject.SetActive(false);
+    }
+
     void Update()
     {
         if (isOwnedLocallyInHierarchy)

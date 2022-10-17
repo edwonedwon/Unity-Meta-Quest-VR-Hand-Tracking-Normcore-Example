@@ -10,6 +10,11 @@ public class RealtimeOVRHandView : RealtimeComponent<OVRHandViewModel>
     public List<Transform> controllerParents;
     public List<Transform> handParents;
 
+    void Start()
+    {
+        HideAllHandViews();
+    }
+
     void Update()
     {
         if (isOwnedLocallyInHierarchy)
@@ -26,6 +31,14 @@ public class RealtimeOVRHandView : RealtimeComponent<OVRHandViewModel>
     void OnHandViewTypeDidChange(OVRHandViewModel model, int handViewType)
     {
         SwitchHandView(handViewType);
+    }
+
+    void HideAllHandViews()
+    {
+        foreach(var parent in controllerParents)
+            parent.gameObject.SetActive(false);
+        foreach(var parent in handParents)
+            parent.gameObject.SetActive(false);
     }
 
     void SwitchHandView(int handViewType)
@@ -52,12 +65,21 @@ public class RealtimeOVRHandView : RealtimeComponent<OVRHandViewModel>
     }
 
     protected override void OnRealtimeModelReplaced(OVRHandViewModel previousModel, OVRHandViewModel currentModel)
-    { 
+    {
         if (currentModel != null)
         {
+            bool handTrackingEnabled = OVRPlugin.GetHandTrackingEnabled();
+            int handViewType = 0;
+            if (handTrackingEnabled)
+                handViewType = 1;
+            else
+                handViewType = 0;
+
             // If this is a model that has no data set on it, set the default value
             if (currentModel.isFreshModel)
-                currentModel.handViewType = 0; // default view is controller view
+                currentModel.handViewType = handViewType; // default view is controller view
+
+            SwitchHandView(handViewType);
 
             // Register for events so we'll know if the color changes later
             currentModel.handViewTypeDidChange += OnHandViewTypeDidChange;
