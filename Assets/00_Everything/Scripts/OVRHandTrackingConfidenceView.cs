@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OVRHandRenderControl : MonoBehaviour
+public class OVRHandTrackingConfidenceView : MonoBehaviour
 {
     OVRHand hand;
     OVRHand.TrackingConfidence confidenceLast;
