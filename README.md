@@ -1,5 +1,5 @@
 # Unity-Meta-Quest-VR-Hand-Tracking-Normcore-Example
-example of how to use Meta Quests tracked hands in VR with multiplayer framework Normcore
+example of how to use Meta Quests tracked hands in VR with multiplayer framework Normcore and sync the hands across the network
 
 the main online demo scene is at Assets/00_Everything/Scenes/Online Scene
 
