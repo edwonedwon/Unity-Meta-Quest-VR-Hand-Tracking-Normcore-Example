@@ -14,29 +14,66 @@ public class RealtimeOVRHandTrackingConfidenceView : RealtimeComponent<OVRHandTr
     {
         hand = GetComponent<OVRHand>();
         confidenceLast = hand.HandConfidence;
-    }
-
-    void Start()
-    {
         viewParent.gameObject.SetActive(false);
     }
 
+    void OnEnable()
+    {
+        realtime.didConnectToRoom += OnDidConnectToRoom;
+    }
+
+    void OnDisable()
+    {
+        realtime.didConnectToRoom -= OnDidConnectToRoom;
+    }
+
+    void OnDidConnectToRoom(Realtime realtime)
+    {
+        int handTrackingConfidence = hand.HandConfidence == OVRHand.TrackingConfidence.High ? 1 : 0;
+        ShowHandViewOrNot(handTrackingConfidence);
+    }
+    
     void Update()
     {
         if (isOwnedLocallyInHierarchy)
         {
             if (hand.HandConfidence != confidenceLast)
             {
-                if (hand.HandConfidence == OVRHand.TrackingConfidence.High)
-                    model.handTrackingConfidence = 1;
-                else
-                    model.handTrackingConfidence = 0;
+                int handTrackingConfidence = hand.HandConfidence == OVRHand.TrackingConfidence.High ? 1 : 0;
+                model.handTrackingConfidence = handTrackingConfidence;
             }
             confidenceLast = hand.HandConfidence;
         }
     }
 
     void OnHandTrackingConfidenceDidChange(OVRHandTrackingConfidenceModel model, int handTrackingConfidence)
+    {
+        ShowHandViewOrNot(handTrackingConfidence);
+    }
+
+    protected override void OnRealtimeModelReplaced(OVRHandTrackingConfidenceModel previousModel, OVRHandTrackingConfidenceModel currentModel)
+    {
+        if (currentModel != null)
+        {
+            int handTrackingConfidence = hand.HandConfidence == OVRHand.TrackingConfidence.High ? 1 : 0;
+
+            // If this is a model that has no data set on it, set the default value
+            if (currentModel.isFreshModel)
+                currentModel.handTrackingConfidence = handTrackingConfidence; // default is low confidence
+
+            ShowHandViewOrNot(handTrackingConfidence);
+
+            // Register for events so we'll know if the color changes later
+            currentModel.handTrackingConfidenceDidChange += OnHandTrackingConfidenceDidChange;
+        }
+        if (previousModel != null) 
+        {
+            // Unregister from events
+            currentModel.handTrackingConfidenceDidChange -= OnHandTrackingConfidenceDidChange;
+        }
+    }
+
+    void ShowHandViewOrNot(int handTrackingConfidence)
     {
         switch(handTrackingConfidence)
         {
@@ -50,24 +87,6 @@ public class RealtimeOVRHandTrackingConfidenceView : RealtimeComponent<OVRHandTr
                 viewParent.gameObject.SetActive(true);
             }
             break;
-        }
-    }
-
-    protected override void OnRealtimeModelReplaced(OVRHandTrackingConfidenceModel previousModel, OVRHandTrackingConfidenceModel currentModel)
-    {
-        if (currentModel != null)
-        {
-            // If this is a model that has no data set on it, set the default value
-            if (currentModel.isFreshModel)
-                currentModel.handTrackingConfidence = 0; // default is low confidence
-
-            // Register for events so we'll know if the color changes later
-            currentModel.handTrackingConfidenceDidChange += OnHandTrackingConfidenceDidChange;
-        }
-        if (previousModel != null) 
-        {
-            // Unregister from events
-            currentModel.handTrackingConfidenceDidChange -= OnHandTrackingConfidenceDidChange;
         }
     }
 }

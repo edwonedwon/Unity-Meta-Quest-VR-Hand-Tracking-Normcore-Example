@@ -15,6 +15,25 @@ public class RealtimeOVRHandView : RealtimeComponent<OVRHandViewModel>
         HideAllHandViews();
     }
 
+    void OnEnable()
+    {
+        realtime.didConnectToRoom += OnDidConnectToRoom;
+    }
+
+    void OnDisable()
+    {
+        realtime.didConnectToRoom -= OnDidConnectToRoom;
+    }
+
+    void OnDidConnectToRoom(Realtime realtime)
+    {
+        bool handTrackingEnabled = OVRPlugin.GetHandTrackingEnabled();
+        if (handTrackingEnabled)
+            SwitchHandView(1);
+        else
+            SwitchHandView(0);
+    }
+
     void Update()
     {
         if (isOwnedLocallyInHierarchy)
@@ -41,6 +60,7 @@ public class RealtimeOVRHandView : RealtimeComponent<OVRHandViewModel>
             parent.gameObject.SetActive(false);
     }
 
+    // 0 = controller, 1 = hand tracking
     void SwitchHandView(int handViewType)
     {
         switch(handViewType)
