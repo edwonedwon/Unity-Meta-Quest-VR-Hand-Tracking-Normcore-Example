@@ -134,10 +134,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVR Rig
       objectReference: {fileID: 0}
-    - target: {fileID: 7523491324680190381, guid: 08f1e87b258004f1cb11cf87c006785c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7523491324680217997, guid: 08f1e87b258004f1cb11cf87c006785c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -293,7 +289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4799643296730111413, guid: 2c9521a26612f6948a6c6f60aa59c962, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.97
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 4799643296730111413, guid: 2c9521a26612f6948a6c6f60aa59c962, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

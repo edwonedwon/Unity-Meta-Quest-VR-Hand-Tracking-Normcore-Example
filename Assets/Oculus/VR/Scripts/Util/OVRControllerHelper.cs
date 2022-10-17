@@ -114,7 +114,7 @@ public class OVRControllerHelper : MonoBehaviour
 				break;
 		}
 
-		Debug.LogFormat("OVRControllerHelp: Active controller type: {0} for product {1} (headset {2})", activeControllerType, OVRPlugin.productName, headset);
+		// Debug.LogFormat("OVRControllerHelp: Active controller type: {0} for product {1} (headset {2})", activeControllerType, OVRPlugin.productName, headset);
 
 		// Hide all controller models until controller get connected
 		m_modelOculusTouchQuestAndRiftSLeftController.SetActive(false);
