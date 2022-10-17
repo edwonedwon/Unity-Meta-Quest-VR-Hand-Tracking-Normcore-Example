@@ -3410,7 +3410,8 @@ GameObject:
   - component: {fileID: 7545967182718391074}
   - component: {fileID: 4488281831665430638}
   - component: {fileID: 1908641260635188668}
-  - component: {fileID: 6469701363055001822}
+  - component: {fileID: 208321922796435867}
+  - component: {fileID: 8108803699547826856}
   m_Layer: 0
   m_Name: OVR Hand Tracked Left
   m_TagString: Untagged
@@ -3537,7 +3538,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &6469701363055001822
+--- !u!114 &208321922796435867
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3546,10 +3547,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 8348690920686549449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62a0cffaa86114e9d9cb24465b10d7bf, type: 3}
+  m_Script: {fileID: -363599832, guid: c424820a8880b8845bda10ec0b41507e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderParent: {fileID: 1726398817034782894}
+  _realtime: {fileID: 0}
+  _sceneViewUUID: 
+  _viewUUID: 
+  _sceneViewPreventOwnershipTakeover: 0
+  _sceneViewDestroyWhenOwnerOrLastClientLeaves: 1
+  _sceneViewDestroyWhenOwnerOrLastClientLeavesMigrated: 1
+  _sceneViewDestroyWhenLastClientLeaves: 1
+  _components:
+  - componentID: 1
+    component: {fileID: 8108803699547826856}
+  _childViews:
+  - componentID: 1
+    component: {fileID: 1630100269199351407}
+--- !u!114 &8108803699547826856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348690920686549449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d8bc0004e4f49d48338906477b9c16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewParent: {fileID: 1726398817034782894}
 --- !u!1 &8522914097908608596
 GameObject:
   m_ObjectHideFlags: 0
