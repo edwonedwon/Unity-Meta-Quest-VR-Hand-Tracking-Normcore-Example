@@ -6,6 +6,13 @@ public class OVRHandView : MonoBehaviour
 {
     public List<Transform> controllerParents;
     public List<Transform> handParents;
+
+    bool handTrackingEnabledLast;
+
+    void Awake()
+    {
+        handTrackingEnabledLast = OVRPlugin.GetHandTrackingEnabled();
+    }
     
     void Start()
     {
@@ -15,10 +22,14 @@ public class OVRHandView : MonoBehaviour
     void Update()
     {
         bool handTrackingEnabled = OVRPlugin.GetHandTrackingEnabled();
-        if (handTrackingEnabled)
-            SwitchHandView(1);
-        else
-            SwitchHandView(0);
+        if (handTrackingEnabled != handTrackingEnabledLast)
+        {
+            if (handTrackingEnabled)
+                SwitchHandView(1);
+            else
+                SwitchHandView(0);
+        }
+        handTrackingEnabledLast = handTrackingEnabled;
     }
 
     void HideAllHandViews()
